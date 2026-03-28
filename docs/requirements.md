@@ -144,3 +144,9 @@ Campos do atendimento:
 
 ---
 
+## Histórico de Versões
+
+| Versão | Data       | Descrição                                      | Autor               | Revisor            |
+|--------|------------|------------------------------------------------|---------------------|--------------------|
+| 1.0    | 26/03/2026 | Criação do documento e requisitos              | [Kaio Macedo Santana](https://github.com/bigkaio)  | [Maria Clara](https://github.com/alvezclari) | 
+
