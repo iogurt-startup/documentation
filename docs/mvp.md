@@ -35,18 +35,21 @@ Os intervalos de classificação (Estratégico, Operacional e Complementar) fora
 | ID | História de Usuário | Impacto | Confiança | Facilidade | **Score Final** | **Classificação** | Depende de |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- | :--- |
 | **US01** | Acesso ao Sistema (Login/Logout) | 10 | 10 | 9 | **900** | Estratégico | — |
-| **US04** | Cadastro de Paciente e Tutor | 10 | 10 | 7 | **700** | Estratégico | US01 |
-| **US09** | Registro de Atendimento Clínico | 10 | 9 | 5 | **450** | Operacional | US04, US07 |
-| **US07** | Criação de Novo Agendamento | 9 | 9 | 5 | **405** | Operacional | US04, US06 |
-| **US03** | Listagem e Busca de Pacientes | 7 | 10 | 5 | **350** | Operacional | US04 |
+| **US05** | Cadastro de Paciente e Tutor | 10 | 10 | 7 | **700** | Estratégico | US01 |
+| **US09** | Registro de Atendimento Clínico | 10 | 9 | 5 | **450** | Operacional | US05, US07 |
+| **US07** | Criação de Novo Agendamento | 9 | 9 | 5 | **405** | Operacional | US05, US06 |
+| **US04** | Listagem e Busca de Pacientes | 7 | 10 | 5 | **350** | Operacional | US05 |
 | **US06** | Visualização da Agenda Diária | 8 | 8 | 5 | **320** | Operacional | US01 |
-| **US10** | Consulta ao Histórico e Prontuário | 7 | 9 | 4 | **252** | Operacional | US09 |
-| **US05** | Histórico de Vacinação | 7 | 8 | 4 | **224** | Operacional | US04 |
+| **US11** | Histórico Clínico Unificado | 8 | 9 | 4 | **288** | Operacional | US09 |
 | **US02** | Painel Inicial (Home) | 7 | 7 | 5 | **245** | Operacional | US01, US06 |
+| **US03** | Dashboard Gerencial (Gráficos) | 6 | 8 | 5 | **240** | Operacional | US02, US09 |
+| **US10** | Emissão de Receituário Clínico | 7 | 9 | 4 | **252** | Operacional | US09 |
+| **US12** | Gerenciamento de Exames Anexados | 6 | 8 | 5 | **240** | Operacional | US09 |
+| **US13** | Resumo de Atendimento por IA | 5 | 7 | 4 | **140** | Complementar | US09 |
+| **US14** | Dashboard do Tutor | 5 | 6 | 5 | **150** | Complementar | US05, US09 |
+| **US15** | Alertas e Recomendações (Care) | 4 | 5 | 3 | **60** | Complementar | US14 |
+| **US16** | Histórico Completo Visão Tutor | 4 | 6 | 4 | **96** | Complementar | US14, US11 |
 | **US08** | Cancelamento e Reagendamento | 6 | 8 | 2 | **96** | Complementar | US07 |
-| **US11** | Dashboard do Tutor | 5 | 6 | 5 | **150** | Complementar | US04, US09 |
-| **US13** | Histórico Completo Visão Tutor | 4 | 6 | 4 | **96** | Complementar | US11, US10 |
-| **US12** | Alertas e Recomendações (Care) | 4 | 5 | 3 | **60** | Complementar | US11, US05 |
 
 ---
 
@@ -71,10 +74,10 @@ O desenvolvimento foi distribuído em **3 MVPs incrementais** ao longo de **12 s
 | ID | História de Usuário | Classificação | Prioridade no ciclo |
 | :--- | :--- | :--- | :--- |
 | **US01** | Acesso ao Sistema (Login/Logout) | Estratégico | 1ª — base de tudo |
-| **US04** | Cadastro de Paciente e Tutor | Estratégico | 2ª — depende de US01 |
+| **US05** | Cadastro de Paciente e Tutor | Estratégico | 2ª — depende de US01 |
 | **US06** | Visualização da Agenda Diária | Operacional | 3ª — depende de US01 |
-| **US03** | Listagem e Busca de Pacientes | Operacional | 4ª — depende de US04 |
-| **US07** | Criação de Novo Agendamento | Operacional | 5ª — depende de US04 e US06 |
+| **US04** | Listagem e Busca de Pacientes | Operacional | 4ª — depende de US05 |
+| **US07** | Criação de Novo Agendamento | Operacional | 5ª — depende de US05 e US06 |
 
 **Resultado esperado**: *Ao fim deste ciclo, é possível autenticar, cadastrar um paciente com seu tutor, visualizar a agenda do dia e registrar um novo agendamento.*
 
@@ -82,41 +85,42 @@ O desenvolvimento foi distribuído em **3 MVPs incrementais** ao longo de **12 s
 
 ### MVP 2 — Atendimento Clínico e Histórico
 **Período:** Semanas 5 a 8  
-**Objetivo:** Adicionar o módulo de prontuário e atendimento clínico, além do histórico de vacinação e o painel inicial. Ao final deste ciclo, o sistema já suporta o fluxo completo de uma consulta — do agendamento ao registro clínico.
+**Objetivo:** Adicionar o módulo de prontuário e atendimento clínico, com seu histórico, receita, além do painel inicial gerencial.
 
 | ID | História de Usuário | Classificação | Prioridade no ciclo |
 | :--- | :--- | :--- | :--- |
-| **US09** | Registro de Atendimento Clínico | Operacional | 1ª — depende de US04 e US07 |
-| **US05** | Histórico de Vacinação | Operacional | 2ª — depende de US04 |
-| **US10** | Consulta ao Histórico e Prontuário | Operacional | 3ª — depende de US09 |
+| **US09** | Registro de Atendimento Clínico | Operacional | 1ª — depende de US05 e US07 |
+| **US11** | Histórico Clínico Unificado | Operacional | 2ª — depende de US09 |
+| **US10** | Emissão de Receituário Clínico | Operacional | 3ª — depende de US09 |
 | **US02** | Painel Inicial (Home) | Operacional | 4ª — depende de US01 e US06 |
+| **US03** | Dashboard Gerencial (Gráficos) | Operacional | 5ª — depende de US02 |
+| **US12** | Gerenciamento de Exames Anexados | Operacional | 6ª — depende de US09 |
 
-**Resultado esperado**: *Ao fim deste ciclo, é possível registrar um atendimento clínico completo, consultar o prontuário e o histórico de vacinação, e visualizar o painel inicial com a agenda e os últimos atendimentos.*
+**Resultado esperado**: *Ao fim deste ciclo, é possível realizar toda a rotina laboratorial do médico: consultar, registrar histórico, imprimir receita, guardar exame, ver o gráfico do dia analítico gerencial.*
 
 ---
 
 ### MVP 3 — Portal do Tutor e Funcionalidades Complementares
 **Período:** Semanas 9 a 12  
-**Objetivo:** Entregar o portal do tutor e as funcionalidades complementares restantes. A última semana deste ciclo é dedicada a testes de integração, correção de bugs e preparação para a entrega final do projeto.
+**Objetivo:** Entregar o portal do tutor e funcionalidades de retenção do paciente.
 
 | ID | História de Usuário | Classificação | Prioridade no ciclo |
 | :--- | :--- | :--- | :--- |
-| **US11** | Dashboard do Tutor | Complementar | 1ª — depende de US04 e US09 |
+| **US14** | Dashboard do Tutor | Complementar | 1ª — depende de US05 e US09 |
 | **US08** | Cancelamento e Reagendamento | Complementar | 2ª — depende de US07 |
-| **US13** | Histórico Completo Visão Tutor | Complementar | 3ª — depende de US11 e US10 |
-| **US12** | Alertas e Recomendações (Care) | Complementar | 4ª — depende de US11 e US05 |
+| **US16** | Histórico Completo Visão Tutor | Complementar | 3ª — depende de US14 e US11 |
+| **US15** | Alertas e Recomendações (Care) | Complementar | 4ª — depende de US14 |
+| **US13** | Resumo de Atendimento por IA | Complementar | 5ª — depende de US09 |
 
-**Resultado esperado**: *Ao fim deste ciclo, o tutor consegue acessar seu dashboard, visualizar o histórico do seu pet e receber alertas sobre vacinas e consultas. A clínica consegue cancelar ou reagendar atendimentos existentes.*
+**Resultado esperado**: *Ao fim deste ciclo, o ecossistema está perfeito: Tutor checa vacinas remotamente, IA facilita a visão da recepção, e é permitido cancelar e repor retornos clínicos.*
 
 ---
 
 ## Referências
 
-* **ICE Scoring Model | Definition and Overview** — ProductPlan. Disponível em: [https://www.productplan.com/glossary/ice-scoring-model/](https://www.productplan.com/glossary/ice-scoring-model/). Acesso em: 27 mar. 2026.
-
-* **What is the ICE Scoring Framework? Guide and Template** — Savio. Disponível em: [https://www.savio.io/product-roadmap/ice-scoring-model/](https://www.savio.io/product-roadmap/ice-scoring-model/). Acesso em: 27 mar. 2026.
-
-* **Build your MVP efficiently with agile methodology** — Imaginary Cloud. Disponível em: [https://www.imaginarycloud.com/blog/build-mvp-with-agile](https://www.imaginarycloud.com/blog/build-mvp-with-agile). Acesso em: 27 mar. 2026.
+* **ICE Scoring Model | Definition and Overview** — ProductPlan.
+* **What is the ICE Scoring Framework? Guide and Template** — Savio.
+* **Build your MVP efficiently with agile methodology** — Imaginary Cloud.
 
 ---
 
@@ -125,5 +129,4 @@ O desenvolvimento foi distribuído em **3 MVPs incrementais** ao longo de **12 s
 | Versão | Data       | Descrição                                      | Autor     | Revisor            |
 |--------|------------|------------------------------------------------|-----------|--------------------|
 | 1.0    | 27/03/2026 | Criação do documento                           | [Taynara Vitorino](https://github.com/taybalau)    | |
-
----
+| 1.1    | 29/03/2026 | Inclusões e unificações e priorização          | Equipe    |                    |
