@@ -53,12 +53,6 @@ Os intervalos de classificação (Estratégico, Operacional e Complementar) fora
 
 ---
 
-## Grafo de Dependências entre Histórias
-
-![Grafo de dependências entre histórias de usuário](imgs/grafo_dependencias_us.svg)
-
----
-
 ## Planejamento dos MVPs
 
 ### Visão Geral
